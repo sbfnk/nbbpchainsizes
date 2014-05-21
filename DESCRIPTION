@@ -1,0 +1,11 @@
+Package: nbbpchainsizes
+Type: Package
+Title: Negative binomial branching process chain sizes
+Version: 0.1
+Date: 2014-05-21
+Author: Sebastian Funk
+Maintainer: Sebastian Funk <sebastian.funk@lshtm.ac.uk>
+Description: Compares models for branching processes with negative binomial chain sizes
+License: GPL-3
+Depends:
+LinkingTo:
