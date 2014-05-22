@@ -150,8 +150,8 @@ nbbpCompareSims <- function(R1, R2, k, n = 100, max = 100, fixn1 = 0, fixn2 = 0,
                 ll <- nbbpCompareModels(chains1,
                                     nbbpChains(k=k, R=R2, n=i))[[7]]$likelihoods
             } else {
-                ll <- nbbpCompareModels(outbreakChain(k=k, R=R1, n=n1),
-                                    nbbpChains(k=k, R=R2, n=i))[[7]]$likelihoods
+                ll <- nbbpCompareModels(nbbpChains(k=k, R=R1, n=n1),
+                                        nbbpChains(k=k, R=R2, n=i))[[7]]$likelihoods
             }
             names(ll) <- c("none", "same.k", "same.R", "k.1", "same.R.same.k",
                            "same.R.k.1")
