@@ -1,4 +1,10 @@
 function optres_arr = ML_compare(dataset,init_par1,init_par2)
+% Performs model comparison for a 'dataset' using the six models outlined
+% in the text.  init_par1 and init_par2 contain the initial parameter
+% values for the two populations beind considered (i.e R and k for each),
+% but these values are then optimized for each of the six models within the
+% constraints of the model i.e the Rs may are may not be constrained to be
+% equal.
 
 mean_r = (init_par1(1) + init_par2(1))/2;
 mean_k = sqrt(init_par1(2)*init_par2(2));
@@ -18,10 +24,6 @@ elseif strcmp(dataset,'mpx_ps')
 elseif strcmp(dataset,'mers_time')
     dataset_num = 5;
     data = load('setup\MERS_DATA');
-% elseif strcmp(dataset,'mers_time_trunc')
-%     dataset_num = 5;
-%     data = load('setup\MERS_DATA');
-%     data.mers_cluster=data.mers_cluster(2:end,:);
 elseif strcmp(dataset,'mers_sars')
     dataset_num = 6;
     data = load('setup\MERS_DATA');

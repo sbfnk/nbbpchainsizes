@@ -1,4 +1,6 @@
 function optres_arr = ML_compare_bs(bs_data1,bs_data2,init_par1,init_par2,sim_type)
+% Model comparison for parametric bootstrapped data.  The outline is
+% similar to the ML_compare function
 
 mean_r = (init_par1(1) + init_par2(1))/2;
 mean_k = sqrt(init_par1(2)*init_par2(2));

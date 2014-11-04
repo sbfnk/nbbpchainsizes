@@ -1,4 +1,12 @@
 function ci_arr = det_ci(dataset,r_arr)
+% Computes the likelihood of various datasets (specified by 'dataset') when
+% a single value of r is assumed for the two populations being compared
+% (specified by r_arr) and returns the results.  This is used to plot the
+% 1-D confindence intervals in the figures.
+%
+% As indicated below, ci_arr stores three arrays, depending on
+% whether k is assumed to be 1, a single value of k is used or two values
+% of k are used.
 
 if strcmp(dataset,'mpx')
     dataset_num = 1;
@@ -15,10 +23,6 @@ elseif strcmp(dataset,'mpx_ps')
 elseif strcmp(dataset,'mers_time')
     dataset_num = 5;
     data = load('setup\MERS_DATA');
-% elseif strcmp(dataset,'mers_time_trunc')
-%     dataset_num = 5;
-%     data = load('setup\MERS_DATA');
-%     data.mers_cluster=data.mers_cluster(2:end,:);
 elseif strcmp(dataset,'mers_sars')
     dataset_num = 6;
     data = load('setup\MERS_DATA');

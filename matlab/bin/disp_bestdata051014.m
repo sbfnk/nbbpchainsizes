@@ -1,11 +1,12 @@
 function disp_bestdata051014(data_name, best_models)
-%data_name = 'mpx_primsec'
-%data_name = 'mers'
-%subplot_arr = [2 2 1; 2 2 2; 2 2 3; 2 2 4];
+% This function displays the model fits
+
 subplot_arr = [2 3 3; 2 3 3; 2 3 6; 2 3 6];
 A_arr = [];
 B_arr = [];
 
+% The first part of this function just gets all the specific data organized
+% according to which dataset is called via 'data_name'
 if strcmp(data_name,'mpx_primsec')
     data = load('setup\MPX_DATA');
     A_pure = data.mpx_primary(data.mpx_primary(:,2) == 1,:);
@@ -23,7 +24,7 @@ if strcmp(data_name,'mpx_ps')
     B_pure = data.mpx_all(data.mpx_all(:,2) == 1,:);
     A_xlab = {'Animal-to-human','transmission'};
     B_xlab = {'Human-to-human','transmission'};
-    load('data\script011014_mpx_ps')
+    load('data\script052314_mpx_ps')
     MLres = MLres_mpx_ps;
     datatype = 'animal_human';
 end
@@ -61,6 +62,8 @@ if strcmp(data_name,'mers')
     datatype = 'chain';
 end
 
+% The second part of the code does the actually calculations of the pdfs to
+% be shown, depending on what 'datatype' the data is
 if strcmp(datatype,'generation')
     for ii = 0:2
         A_arr(ii+1) = sum(A_pure(A_pure(:,3) == ii,1));
@@ -122,6 +125,7 @@ if strcmp(datatype,'animal_human')
     xtick_labels_B = {'0','1','2','>2'};
 end
 
+% And finally we actually plot the data
 colors = {'b','g','m','b--','g--','m--'};
 for ss = 1:4
     subplot(subplot_arr(ss,1),subplot_arr(ss,2),subplot_arr(ss,3))
@@ -148,7 +152,6 @@ for ss = 1:4
     xlabel(xlab)
     ylabel({'Density'})
     set(gca,'FontSize',16)
-%    set(gca,'YScale','Log')
     set(gca,'XTick',1:4)
     
     if (strcmp(datatype,'animal_human') && ss > 2)
@@ -156,17 +159,12 @@ for ss = 1:4
     else
         set(gca,'XTickLabel',xtick_labels)
     end
-    set(gca,'YTick',[.2 .6 1])
-    set(gca,'YTickLabel',{'0.2','0.6','1.0'})
-%     set(gca,'YTick',[.2 .4 .6 .8 1])
-%     set(gca,'YTickLabel',{'0.2','0.4','0.6','0.8','1.0'})
-%     set(gca,'YTick',[.001 .01 .1 1])
-%     set(gca,'YTickLabel',{'0.001','0.01','0.1','1.0'})
+    set(gca,'YTick',[0.01 .5 1])
+    set(gca,'YTickLabel',{'0.0','0.5','1.0'})
 
     if (ss == 1)
         labelg(.6,0.05,2,16)
     elseif (ss == 3)
         labelg(.6,0.05,3,16)
     end
-%     hold off
 end

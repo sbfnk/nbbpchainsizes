@@ -1,4 +1,8 @@
 function labelg(xoff,yoff,lnum,fontsize)
+% Just puts panel labels (e.g. 'A)') on a graph
+% xoff and yoff are the offsets
+% lnum indicates which letter
+
 
 lnums = {'A)','B)','C)','D)','E)','F)','G)','H)','I)','J)','K)','L)','M)','N)','O)','P)','Q)','R)','S)','T)','U)','V)','W)','X)','Y)',};
 

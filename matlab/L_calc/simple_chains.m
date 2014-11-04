@@ -1,5 +1,7 @@
 function logL = simple_chains(par_arr, data)
 % data =  vector of # cases that produce chains of size 1,2,3,4,..,N
+% par_arr(1) = R, par_arr(2) = k
+% logL = log likelihood of data
 
 if par_arr(1) <= 0 | par_arr(2) <= 0
     logL = -Inf;

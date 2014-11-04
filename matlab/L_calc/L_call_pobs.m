@@ -1,4 +1,6 @@
 function L = L_call_pobs(dataset_num,data,par_arr,pobs)
+% Calclation of log likelihood used in the imperfect observation model of
+% monkeypox
 
 MAXSIZE = 12;
 switch(dataset_num)
@@ -28,6 +30,6 @@ switch(dataset_num)
             );
         end
 
-        %Apr 30, 2014 call (only primary cases have pobs bis)
+        %Alternate approach call (only primary cases have pobs bias)
         %L = pointsource_pobs(par_arr(1:2),pobs,data.mpx_ps) + multiplesource_onetype(par_arr(3:4),data.mpx_all);
 end

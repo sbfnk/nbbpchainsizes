@@ -1,5 +1,9 @@
 function logL = mult_prim_chains(par_arr, data)
-% Data(1,:) = #occurences #primaries chain-size
+% Data(1,:) = #occurences #primaries cluster-size
+% e.g. A cluster of size 6 has 3 primary cases
+%
+% par_arr(1) = R, par_arr(2) = k
+% logL = log likelihood of data
 
 r0 = par_arr(1);
 k = par_arr(2);

@@ -1,4 +1,8 @@
 function L = L_call(dataset_num,data,par_arr)
+% This just calls the functions for calculating the log-likelihood based on
+% which dataset is being used.  par_arr(1:2) provide R and k for the first
+% population being analyzed.  par_arr(3:4) provide R and k for the second
+% population
 
 switch(dataset_num)
     case 1 %MPX - primary vs secondary
@@ -12,11 +16,11 @@ switch(dataset_num)
             L = -inf;
             return
         end
-        %In terms of ML value, these two methods should be equivalent, but choosing the first in
+        %In terms of ML value, these two methods should be equivalent, but I use the first in
         %order to be consistent with pobs analysis
         L = pointsource(par_arr(1:2),data.mpx_ps) + mult_prim_chains(par_arr(3:4),data.mpx_prim_csize);
 %        L = pointsource(par_arr(1:2),data.mpx_ps) + multiplesource_onetype(par_arr(3:4),data.mpx_all);
-    case 5 %MERS: time dependence
+    case 5 %MERS: time dependence (continuous dependence on time - not used in draft)
         L = 0;
         for ii = 1:size(data.mers_cluster,1)
             r = par_arr(1) + (par_arr(3)-par_arr(1))*(data.mers_cluster(ii,2)-182)/365;
@@ -27,7 +31,7 @@ switch(dataset_num)
             tmp_dist(end) = 1;
             L = L + simple_chains([r k], tmp_dist);
         end
-    case 6 %MERS vs SARS
+    case 6 %MERS vs SARS (not used in draft)
         L = simple_chains(par_arr(1:2),data.mers_clust_data) + singlesource(par_arr(3:4),data.sars_tran_data);
     case 7 % MERS - early vs late
         L = simple_chains(par_arr(1:2),data.mers_early_clust_data) + simple_chains(par_arr(3:4),data.mers_late_clust_data);

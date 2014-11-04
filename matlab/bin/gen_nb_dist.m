@@ -1,5 +1,5 @@
 function nb_dist =gen_nb_dist(r0,k,m,n)
-% Adapted from Jamie's jnbinrnd
+% Adapted from Jamie Lloyd-Smith's jnbinrnd
 % r0 = mean
 % k = dispersion parameter as defined in Jamie's '05 paper
 %   k =1 --> geometric dist w/ Var = ro(r0 +1)

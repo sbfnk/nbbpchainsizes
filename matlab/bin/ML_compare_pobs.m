@@ -1,4 +1,7 @@
 function optres_arr = ML_compare_pobs(dataset,pobs)
+% Model comparison in the setting of imperfect observation.  This is only
+% set up for animal-human vs human-human transmission of monkeypox, but it
+% could be extended to the other data sets.
 
 if strcmp(dataset,'mpx_ps')
     dataset_num = 4;
@@ -47,4 +50,3 @@ for mm = [6 5 3 4 2 1]
     strcat([meth_str{mm},' & ',num2str(npar(mm)),' & ',num2str(mtext(1)),' & ',num2str(mtext(2)),' & ',num2str(mtext(3)),' & ',num2str(mtext(4)),' & ',num2str(mtext(5)),' & ',num2str(mtext(6))])
 end
 
-%optres_arr(:,5) = optres_arr(:,5)-optres_arr(1,5);

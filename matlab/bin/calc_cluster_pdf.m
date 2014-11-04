@@ -1,7 +1,7 @@
 function clust_pdf = calc_cluster_pdf(par_arr,outbreak_size_limit)
 % Calculates the expected pdf for the distribution of outbreak sizes.  The
-% function will likely be modified often and incorporate various schemes for
-% imperfect surveillance
+% function incorporates various schemes for
+% imperfect surveillance (not all feautures were used in PLoS paper)
 
 r0 = par_arr(1);
 k = par_arr(2);
@@ -38,9 +38,6 @@ else
         r_mj = log(m) - log(j) + gammaln(k*j+j-m) ...
             - gammaln(j-m+1) - gammaln(k*j) ...
             + (j-m)*log(r0/k) - (k*j+j-m)*log(1+r0/k);
-    %     beta_mj = - log(j-1) + gammaln(m+k) + gammaln(k*j-k+j-m-1) ...
-    %         - gammaln(j-m) - gammaln(m) - gammaln(k) - gammaln(k*j-k) ...
-    %         + (j-1)*log(r0/k) - (k*j +j -1)*log(1+r0/k);
         r_mj = exp(r_mj).*ps_pdf;
         r_mj(~isfinite(r_mj)) = 0;
         true_clust_pdf = sum(r_mj');

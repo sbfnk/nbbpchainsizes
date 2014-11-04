@@ -1,4 +1,6 @@
 function  bs_summary = perform_bs(sim_arr1,sim_arr2,sim_type, num_bs)
+%Performs parameteric bootstraps to assess type I error of analysis
+%
 %sim_arr = [R0 k num_clusters]
 %
 %bs_sum(1:6) = fraction of bootstraps favoring model 1:6
@@ -6,6 +8,16 @@ function  bs_summary = perform_bs(sim_arr1,sim_arr2,sim_type, num_bs)
 
 bs_summary = zeros(1,7);
 tic
+
+% Reminder of ML_compare output:
+% Each row has: R_A k_A R_B k_B log L
+% row 1 % two r, two k
+% row 2 % two r, one k
+% row 3 % two r, zero k
+% row 4 % one r, two k
+% row 5 % one r, one k
+% row 6 % one r, zero k
+
 for bb = 1:num_bs
     if mod(bb,20) == 0
         toc,tic;
@@ -52,11 +64,3 @@ for bb = 1:num_bs
 end
 bs_summary = bs_summary/num_bs;
 
-% ML_compare output:
-% Each row has: R_A k_A R_B k_B log L
-% row 1 % two r, two k
-% row 2 % two r, one k
-% row 3 % two r, zero k
-% row 4 % one r, two k
-% row 5 % one r, one k
-% row 6 % one r, zero k

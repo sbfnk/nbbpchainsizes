@@ -1,5 +1,9 @@
 function logL = multiplesource_onetype(par_arr, data)
 % Data(1,:) = #occurences #sources #offspring
+% e.g. 3 cases produce 2 cases in the next generation
+%
+% par_arr(1) = R, par_arr(2) = k
+% logL = log likelihood of data
 
 r0 = par_arr(1);
 k = par_arr(2);

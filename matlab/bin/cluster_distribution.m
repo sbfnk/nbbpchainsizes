@@ -12,6 +12,10 @@ function cluster_dist = cluster_distribution(r0,k,n_ps,k_ps,pobs,max_outbreak_si
 % max_g = maximum # of generations simulated
 % num_sim = number of simulations
 %
+% cluster_distribution(ii,1) = # of clusters of size ii
+% cluster_distribution(ii,1) = # of clusters of size ii that haven't gone
+% extinct (i.e. code stopped because of max_outbreak_size threshold)
+
 
 cluster_dist=zeros(1,2);
 

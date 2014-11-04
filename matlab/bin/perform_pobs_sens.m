@@ -1,4 +1,12 @@
 function  pobs_thresh = perform_pobs_sens(anal_type)
+% Uses bootstrapping to determine if there is a value of p_obs that would
+% change whether or not there is an insignificant difference in
+% animal-human vs human-human transmission of monkeypox.
+%
+% It only makes sense to use this function if there is a statistically
+% significant difference in observation when perfect surveillance is
+% assumed (which was the case for early versions of our analysis, but no
+% the later versions).  So this function is currently not useful.
 
 bs_summary = zeros(1,7);
 tic
@@ -9,20 +17,9 @@ while distinct == 1
          pobs_res = ML_compare_pobs('mpx_ps',pobs_thresh)
     end
     aic_scores = 2*pobs_res(:,5)'-2*[4 3 2 3 2 1];
-%    [~,best] = max(aic_scores);
-%    bs_summary(best) = bs_summary(best) +1;
     if(max(aic_scores(1:3)) - 2 < max(aic_scores(4:6)))
         distinct = 0;
     else
         pobs_thresh = pobs_thresh - 0.01
     end
 end
-
-% ML_compare output:
-% Each row has: R_A k_A R_B k_B log L
-% row 1 % two r, two k
-% row 2 % two r, one k
-% row 3 % two r, zero k
-% row 4 % one r, two k
-% row 5 % one r, one k
-% row 6 % one r, zero k

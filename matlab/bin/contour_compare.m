@@ -1,4 +1,11 @@
 function contour_arr = contour_compare(dataset,r_arr1,r_arr2)
+% Computes the likelihood of various datasets (specified by 'dataset') overy a lattice of points
+% specified by r_arr1, r_arr2 and returns the results.  This can then be
+% used to plot contours
+%
+% As indicated below, contour_arr stores three contours, depending on
+% whether k is assumed to be 1, a single value of k is used or two values
+% of k are used.
 
 if strcmp(dataset,'mpx')
     dataset_num = 1;
@@ -46,6 +53,8 @@ for mm = 1:3
         end
     end
 end
+
 for mm = 1:3
     contour_arr(mm,:,:) = contour_arr(mm,:,:) - max(max(contour_arr(mm,:,:)));
 end
+

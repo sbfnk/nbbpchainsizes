@@ -199,7 +199,7 @@ end
 % transmission
 
 'spx'
-load('data\script011014_mpx_spx')
+load('data\script0110_mpx_spx')
 x_arr = s1_arr;
 y_arr = s2_arr;
 cont_data = cont_spx;
