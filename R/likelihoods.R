@@ -14,7 +14,7 @@ nbbpLikelihood <- function(chains, k, R, log = T) {
       }))
     } else {
       result <- prod(sapply(chains, function(x) {
-        gamma(k * x + x - 1) / gamma(k * x) * gamma(x + 1) * (R / k) ^ (x - 1) / (1 + R / k) ^ (k * x + x - 1)
+        gamma(k * x + x - 1) / (gamma(k * x) * gamma(x + 1)) * (R / k) ^ (x - 1) / (1 + R / k) ^ (k * x + x - 1)
       }))
     }
     return(result)
@@ -39,3 +39,4 @@ nbbpPointSourceLikelihood <- function(chains, k, R, log = F) {
   }
   return(result)
 }
+
