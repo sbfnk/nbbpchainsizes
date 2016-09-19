@@ -48,9 +48,9 @@ nbbpLikelihood <- function(chains, k, R, log = TRUE, exclude.1 = FALSE, infinite
   }
 
   if (log) {
-    sexpl <- sum(exp(likelihoods))
+    sexpl <- sum(exp(likelihoods), na.rm = TRUE)
     if (sexpl < 1) {
-      maxl <- log(1 - sum(exp(likelihoods)))
+      maxl <- log(1 - sum(exp(likelihoods), na.rm = TRUE))
     } else {
       maxl <- -Inf
     }
