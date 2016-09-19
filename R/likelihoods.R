@@ -67,8 +67,6 @@ nbbpPointSourceLikelihood <- function(chains, lik, log = TRUE, ...) {
   return(result)
 }
 
-<<<<<<< HEAD
-=======
 ##' Likelihood for the outcome of a branching process with mixed
 ##' gamma-borel outbreak distribution
 ##'
@@ -109,4 +107,3 @@ gborLikelihood <- function(chains, k, R, log = T, exclude.1 = FALSE, infinite = 
     }
     return(result)
 }
->>>>>>> origin/master
