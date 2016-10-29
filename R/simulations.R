@@ -13,7 +13,7 @@ nbbpChains <- function(n = 1, R, k, init = 1, max) {
     for (i in 1:n) {
       newCases <- init
       chainSize <- newCases
-      while (newCases > 0 & (missing(max) || (chainSize <= max))) {
+      while (newCases > 0 && (missing(max) || (chainSize <= max))) {
         newCases <- sum(rnbinom(n = newCases, size = k, mu = R))
         chainSize <- chainSize + newCases
       }
